@@ -4,9 +4,10 @@ class Dog:
 
     def __init__(self, name):
         self.name = name    # instance variable unique to each instance
-
+    
 x=Dog("hhh")
 print(Dog.kind)
 print(Dog.__name__)
 print(x.kind)
 print(x.name)
+x.getName()

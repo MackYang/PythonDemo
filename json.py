@@ -1,14 +1,13 @@
 import json
-# data = json.dumps([1, 2, 3])
-# print(data)
 
 class Test:
     def __init__(self, name, age):
         self.name = name
         self.age=age
     
-    def fromDic(self,dct):
-        return Test(dct['name'], dct['age'])
+    def fromDic(self, dct):#json转成对象
+        dic=json.loads(dct)
+        return Test(dic['name'],int(dic['age']) )
 
 class TestEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -19,24 +18,15 @@ class TestEncoder(json.JSONEncoder):
 
 
 test = Test('aaa', 12)
-encoder = TestEncoder()
-t = json.dumps(test, cls=TestEncoder)
-print(t)
-# dic =TestEncoder.encode(test)
-# print(dic)
-# newObj = test.fromDic(dic)
-# print(newObj)
-#json.dumps([1, 'simple', 'list'])
+jsonStr = json.dumps(test, cls=TestEncoder)#对象转json
+print(type(jsonStr))
+print(jsonStr)
 
 
-
+newObj = test.fromDic(jsonStr)
+newObj2=Test.fromDic(None,dct= jsonStr)
+print(newObj.name)
+print(newObj2.name)
 
  
-
-
-
-
-# json.loads('{"__complex__": true, "real": 1, "imag": 2}',
-#     object_hook=as_complex)
-
-# list(ComplexEncoder().iterencode(2 + 1j))
+ 

@@ -1,5 +1,10 @@
 # import sys
 
+try:
+    3/0
+except Exception as ex:
+    print(ex)
+
 # while True:
 #     try:
 #         x = int(input("Please enter a number: "))
@@ -7,13 +12,13 @@
 #     except ValueError:#具体异常类型可省略
 #         print("Oops!  That was no valid number.  Try again...")
 #         print("发生异常的类{0},具体的异常信息{1}".format(sys.exc_info()[0],sys.exc_info()[1]) )#输出异常信息
-def func():
-    raise IOError
+# def func():
+#     raise IOError
 
-try:
-    func()
-except IOError as exc:
-    raise RuntimeError('异常链测试') from exc
+# try:
+#     func()
+# except IOError as exc:
+#     raise RuntimeError('异常链测试') from exc
 
 # for arg in sys.argv[1:]:
 #     try:
